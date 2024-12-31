@@ -1,0 +1,44 @@
+{
+    "sentences": [
+        {
+            "project_id": 1,
+            "sentence_id": "1",
+            "sentence": "मनु ने एक दिन बनारस से दिल्ली तक पैदल जाने की योजना बनाई ।"
+        },
+        {
+            "project_id": 1,
+            "sentence_id": "2a",
+            "sentence": "पर उसे ये मालूम नहीं था ।"
+        },
+        {
+            "project_id": 1,
+            "sentence_id": "2b",
+            "sentence": "कि उस दिन बारिश होगी ।"
+        },
+        {
+            "project_id": 1,
+            "sentence_id": "2c",
+            "sentence": "या नहीं होगी ।"
+        },
+        {
+            "project_id": 1,
+            "sentence_id": "3",
+            "sentence": "इसलिये उसने एक दस ईंच का छाता ले लिया ।"
+        },
+        {
+            "project_id": 1,
+            "sentence_id": "4a",
+            "sentence": "मनु सुबह सात बजे चलना शुरू किया |"
+        },
+        {
+            "project_id": 1,
+            "sentence_id": "4b",
+            "sentence": "तभी अचानक तुफान आ गया ।"
+        },
+        {
+            "project_id": 1,
+            "sentence_id": "4c",
+            "sentence": "और छाता उड़ गया ।"
+        }
+    ]
+}

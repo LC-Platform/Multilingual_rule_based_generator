@@ -21,7 +21,7 @@ def process_and_write_json(data, output_file):
                 segment_id = entry.get("segment_id", "").strip()
                 text = entry.get("text", "").strip()
                 file.write(f"{segment_id}\t{text}\n")  # Write segment_id and text as tab-separated values
-        
+                # file.write(f"{text}\n")
         print(f"Formatted data successfully written to {output_file}")
     except Exception as e:
         print(f"An error occurred: {e}")

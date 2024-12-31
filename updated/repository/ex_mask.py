@@ -7,7 +7,7 @@ sentences = [
 ]
 
 # Process sentences
-results = process_multiple_sentences(sentences)
+results = process_masked_multiple_sentences(sentences)
 for res in results:
     print(res)
 
@@ -188,7 +188,7 @@ def gen_vibhakti_prediction(sentence):
         return sentence
 
 # Function to process multiple sentences and measure execution time
-def process_multiple_sentences(sentences):
+def process_masked_multiple_sentences(sentences):
     results = []
     
     start_time = time.time()
@@ -221,7 +221,7 @@ def process_multiple_sentences(sentences):
 #         "राम राजनीति [MASK] चर्चा करता है"
 #     ]
     
-#     results, time_taken = process_multiple_sentences(sentences)
+#     results, time_taken = process_masked_multiple_sentences(sentences)
     
 #     for sentence, result in zip(sentences, results):
 #         print(f"Input: {sentence}\nOutput: {result}\n")

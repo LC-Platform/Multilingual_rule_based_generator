@@ -1039,9 +1039,9 @@ def preprocess_postposition_new(concept_type, np_data, words_info, verb_data, in
         else:
             new_case = 'd'
 
-    elif data_case in ('k2p','k7','k7p','k7t','rt'):
-        # ppost = '' 
-        ppost = '<>'
+    # elif data_case in ('k2p','k7','k7p','k7t','rt'):
+    #     # ppost = '' 
+    #     ppost = '<>'
     elif data_case in ('k2p'):
         ppost = '' # modified from meM 22/06
     elif data_case in ('k3', 'k5', 'k5prk'):
@@ -1111,7 +1111,7 @@ def preprocess_postposition_new(concept_type, np_data, words_info, verb_data, in
         ppost = 'se hokara'
     # elif 'rask7' in data_case:
     #     ppost = 'sahiwa'
-    elif data_case in ('rask','k1as','k2as','k3as','k4as','k5as','k7as'):
+    elif data_case in ('rask1','rask2','rask3','rask4','rask5','k1as','k2as','k3as','k4as','k5as','k7as'):
         ppost = 'ke sAWa'
     elif data_case == 'r6':
         ppost = 'kA' #if data[4] == 'f' else 'kA'
@@ -2324,7 +2324,7 @@ def process_auxiliary_verbs(verb: Verb, index_data, concept, spkview_data,senten
         verb = set_main_verb_tam_zero(verb)
 
     auxiliary_verb_terms = identify_auxiliary_verb_terms(concept_term)
-    if 'pass' in sentence_type and auxiliary_verb_terms[1] not in repository.constant.aux_exception_case and  len(auxiliary_verb_terms)>2:
+    if len(auxiliary_verb_terms)>2 and 'pass' in sentence_type and auxiliary_verb_terms[1] not in repository.constant.aux_exception_case:
         ''' verb is in below cases
            1. pA-yA_jA_wA_hE
            2. pA-yA_jA_yA_hE
@@ -3896,15 +3896,14 @@ def populate_morpho_semantic_dict(index_data,gnp_info, PPfull_data,words_info):
             elif term == 'dviwva':
                 dup_word = clean(words_info[i][1])
                 # #print(dup_word,'dupw')
-                if dup_word in PPfull_data[i][1]:
-                    dup_word = '-' + dup_word
-                    # Convert the specific element to a list
-                    # PPfull_data[i] = list(PPfull_data[i])
-                    # # Make the modification
-                    # PPfull_data[i][1] = PPfull_data[i][1].replace(dup_word, dup_word1)
-                    # # Convert back to a tuple
-                    # PPfull_data[i] = tuple(PPfull_data[i])
-                    temp = (a, dup_word)
+                if dup_word in PPfull_data[i][1]:  # Check membership in tuple
+                    if '<>' in PPfull_data[i][1]:
+                        dup_word1= dup_word +'-'+ dup_word + ' <>'
+                        PPfull_data[i] = (PPfull_data[i][0], dup_word1)  # Replace the tuple
+                        temp = (a, '')
+                    else:
+                        dup_word = '-' + dup_word
+                        temp = (a, dup_word)
             else:
                 # fetch GNP of next noun
                 # curr_index = 

@@ -1,9 +1,9 @@
 import json
 import re
 
-class SentenceParser:
-    def __init__(self, input_text):
-        self.input_text = input_text
+class USR_to_json:
+    def __init__(self, segments):
+        self.segments = segments
         self.data = []
         self.current_sentence = {}
         self.current_tokens = []
@@ -45,38 +45,41 @@ class SentenceParser:
 
     #     return self.data
     def parse_input_text(self):
-        lines = self.input_text.strip().split("\n")
-        for line in lines:
-            #print(line, 'lll')
-            line = line.strip()
-            #print(line, 'linssssssssssss')
+        for segment in self.segments:
+            lines = segment.strip().split("\n")
+            skip_segment = False  # Flag to skip the current segment
 
-            if line.startswith("Geo_") or line.startswith(" Geo_"):
-                continue  
+            for line in lines:
+                if skip_segment:
+                    break  # Exit the inner loop and move to the next segment
 
-            if line.startswith("<segment_id=") or line.startswith("<sent_id="):
-                self.usr_id = self.extract_usr_id(line)
-            elif line.startswith("#") or line.startswith("%"):
-                self.process_sentence_metadata(line)
-            elif line.startswith("</segment_id>") or line.startswith("</sent_id>"):
-                self.finalize_sentence()
-            elif line:
-                try:
-                    #print(line, 'lines')
+                line = line.strip()
 
-                    # Check if line length is not equal to 9, then break the loop
-                    if len(line.split()) != 9:
-                        #print(f"Check USR for Sentence ID: {self.usr_id}, line: {line}")
-                        break  # Breaks out of the loop if line length isn't equal to 9
+                if line.startswith("Geo_") or line.startswith(" Geo_"):
+                    continue
 
-                    token = self.process_token_info(line)
-                    self.current_tokens.append(token)
+                if line.startswith("<segment_id=") or line.startswith("<sent_id="):
+                    print(line)
+                    self.usr_id = self.extract_usr_id(line)
+                elif line.startswith("#") or line.startswith("%"):
+                    self.process_sentence_metadata(line)
+                elif line.startswith("</id>"):
+                    self.finalize_sentence()
+                elif line:
+                    try:
+                        # Check if line length is not equal to 9
+                        if len(line.split()) != 9:
+                            skip_segment = True  # Set the flag to skip the segment
+                            break  # Exit the loop for the current segment
 
-                except (IndexError, ValueError) as e:
-                    #print(f"Error in Sentence ID: {self.usr_id}")
-                    #print(f"Error processing line: {line}")
-                    #print(f"Exception: {e}")
-                    raise  
+                        token = self.process_token_info(line)
+                        self.current_tokens.append(token)
+
+                    except (IndexError, ValueError) as e:
+                        raise  
+
+            if skip_segment:
+                continue  # Skip to the next segment
 
         if self.current_sentence:
             self.finalize_sentence()
@@ -123,7 +126,7 @@ class SentenceParser:
         self.process_discourse_info(token, token_info[5])
         self.process_speaker_view_or_key_value(token, token_info[6])
         self.process_construct_info(token, token_info[8])
-        print(token_info[8],'lhlhlhl')
+        # print(token_info[8],'lhlhlhl')
         self.process_special_types(token, token_info[0])
 
         if "cxn_construct" in token_info[8]:

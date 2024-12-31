@@ -1,3 +1,25 @@
+# from googleapiclient.discovery import build
+# import json
+
+# def transliterate_text(text):
+#     # Set up API key and build the service
+#     api_key = 'YOUR_API_KEY'
+#     service = build('transliterate', 'v1', developerKey=api_key)
+
+#     # Make the request
+#     result = service.transliterate().transliterate(
+#         sourceText=text, 
+#         targetLanguage='hi'
+#     ).execute()
+
+#     # Extract and return the transliterated text
+#     transliterated_text = result.get('transliterations', [{}])[0].get('transliteratedText', '')
+#     return transliterated_text
+
+# text = "Hello, how are you?"
+# print(transliterate_text(text))
+
+
 from wxconv import WXC
 
 def convert_to_hindi(input_list):
@@ -6,7 +28,7 @@ def convert_to_hindi(input_list):
     hindi_text_list = [wx1.convert(word) for word in input_list]
     return hindi_text_list
 
-one_markers = ["घेरे"]
+one_markers = ["अधिकारियों"]
 converted_text1 = convert_to_hindi(one_markers)
 print(converted_text1)
 # def convert_to_hindi(input_list):

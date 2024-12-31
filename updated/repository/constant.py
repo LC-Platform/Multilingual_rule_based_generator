@@ -23,7 +23,7 @@ PRONOUN_TERMS = ['addressee', 'speaker', 'kyA', 'Apa','wyax', 'jo', 'koI', 'kOna
 NOMINAL_VERB_DEPENDENCY = ['rt', 'rh', 'k7p','k7', 'k7t', 'k2','rblpk','rblsk','rblak','k1s']
 # constants.py
 pass_list=['pass-affirmative','pass-interrogative','pass-negative sentence']
-k7_postposition_list=['पर', 'को', 'में', 'के अनुसार', 'के लिये']
+k7_postposition_list=['पर', 'को', 'में']
 noun_attribute = dict()
 USR_row_info = [
     'root_words', 'index_data', 'seman_data', 'gnp_data', 'depend_data',
@@ -71,7 +71,7 @@ category_mapping = {
     # Add more mappings as needed
 }
 
-construction_list =['cp', 'conj', 'disjunct', 'span', 'widthmeas', 'depthmeas', 'distmeas', 'rate', 'timemeas', 'waw', 'calender', 'massmeas', 'heightmeas', 'spatial','xvanxva']
+construction_list =['cp', 'conj','temporal', 'disjunct', 'span', 'widthmeas', 'depthmeas', 'distmeas', 'rate', 'timemeas', 'waw', 'calender', 'massmeas', 'heightmeas', 'spatial','xvanxva','compound']
 # spkview_list_for_discource=['BI_1','samAveSI','alAvA','awirikwa']
-
+exception_no_tam_sentence_type = ["fragment","term","title","heading"]
 aux_exception_case = ['sakawA']

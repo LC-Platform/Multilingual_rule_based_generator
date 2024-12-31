@@ -162,7 +162,7 @@ def process_file_data(input_data,segment_id,json_output):
         # #print(words_info,'cccccccccccc')
         # Categorising words as Nouns/Pronouns/Adjectives/..etc.
         foreign_words_data,indeclinables_data, pronouns_data, nouns_data,verbal_adjectives, adjectives_data, verbs_data, adverbs_data, others_data, nominal_forms_data = identify_cat(
-            words_info)
+            words_info,sentence_type)
         
         # #print(verbs_data,'vd')
 
@@ -416,7 +416,7 @@ def hindi_genration(input_text):
         # except Exception as e:
         #     # Capture the last line of the error and append it to results
         #     all_output.append(f"Error processing {segment_id1}: {str(e).splitlines()[-1]}")
-    # all_output=process_multiple_sentences(all_output)
+    # all_output=process_masked_multiple_sentences(all_output)
     # #print(segment_ids)    # Return both the segment outputs and the segment IDs as separate lists
     # for segment_id, output in zip(segment_ids, all_output):
         try:
@@ -429,7 +429,7 @@ def hindi_genration(input_text):
         except Exception as e:
             # Capture the last line of the error and append it to results
             all_output.append(f"Error processing {segment_id1}: {str(e).splitlines()[-1]}")
-    all_output=process_multiple_sentences(all_output)
+    all_output=process_masked_multiple_sentences(all_output)
     # print(segment_ids)    # Return both the segment outputs and the segment IDs as separate lists
     # for segment_id, output in zip(segment_ids, all_output):
     last_output=process_sentence(segment_ids,sentences,all_output)

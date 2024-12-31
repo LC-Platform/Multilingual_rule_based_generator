@@ -20,9 +20,10 @@
 
 # =====================================
 import openpyxl
+import re
 
 # File paths
-input_file = "output.txt"  # Replace with the path to your input file
+input_file = "/home/varshith/Downloads/hindi_generator_mask/updated/output.txt"  # Replace with the path to your input file
 output_file = "1.xlsx"  # Path to save the output Excel file
 
 # Create a new workbook
@@ -34,7 +35,10 @@ sheet.title = "Sentences"
 with open(input_file, "r", encoding="utf-8") as file:
     content = file.read()
 
-# Split the data into segments based on <sent_id>
+# Add \n\n after every </sent_id>
+content = re.sub(r'(</sent_id>)', r'\1\n', content)
+
+# Split the data into segments based on double newlines
 segments = content.strip().split("\n\n")  # Separate by blank lines
 
 # Write each segment into a new row in the Excel sheet
@@ -46,4 +50,3 @@ for row_index, segment in enumerate(segments, start=1):
 workbook.save(output_file)
 
 print(f"Data has been successfully stored in '{output_file}'.")
-
