@@ -28,7 +28,7 @@ def convert_to_hindi(input_list):
     hindi_text_list = [wx1.convert(word) for word in input_list]
     return hindi_text_list
 
-one_markers = ["अधिकारियों"]
+one_markers = ["हम रक्त संश्लेषण के लिए जिम्मेदार कोशिकाओं को इकट्ठा करके अपनी पद्धति का परीक्षण करने की योजना बना रहे हैं।"]
 converted_text1 = convert_to_hindi(one_markers)
 print(converted_text1)
 # def convert_to_hindi(input_list):

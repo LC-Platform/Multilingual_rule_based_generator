@@ -1,0 +1,14 @@
+<sent_id=gold_data_003>
+#बच्चों ने किताब खरीदी।
+baccA_1 1 anim pl 3:k1 - - - -
+kiwAba_1 2 - - 3:k2 - - - -
+KarIxa_1-yA_1 3 - - 0:main - - - -
+%affirmative
+</sent_id>
+<sent_id=gold_data_002>
+#सीता किताब पढ़ती है।
+sIwA 1 per/female - 3:k1 - - - -
+kiwAba_1 2 - - 3:k2 - - - -
+paDZa_1-wA_hE_1 3 - - 0:main - - - -
+%affirmative
+</sent_id>
