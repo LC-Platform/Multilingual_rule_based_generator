@@ -1,4 +1,4 @@
-# Multilingual_rule_based_generator
+
 # Multilingual Rule-Based Generation
 
 ## Overview
